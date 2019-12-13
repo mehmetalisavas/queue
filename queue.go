@@ -49,7 +49,7 @@ func (q *Queue) Pop() interface{} {
 	if q.count == 1 {
 		q.v = q.v[:0] // return zero-valued array
 	} else {
-		q.v = q.v[1 : len(q.v)-1]
+		q.v = q.v[1:]
 	}
 	q.count--
 
@@ -63,9 +63,5 @@ func (q *Queue) Count() int {
 
 // isEmpty checks the queue if it has any item in it.
 func (q *Queue) isEmpty() bool {
-	if q.count == 0 {
-		return true
-	}
-
-	return false
+	return q.count == 0
 }
